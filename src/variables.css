@@ -1,0 +1,79 @@
+:root {
+    /**
+     * White
+     */
+    --white: #fff;
+    --white-hover: #f1f8ff;
+    --white-active: #e6f2ff;
+    --white-primary: #fafafa;
+    --web-white: #f8fbfc;
+    /**
+     * Blue
+     */
+    --blue: #2f88f0;
+    --blue-hover: #288cff;
+    --blue-active: #2c7dda;
+    --blue-turquoise: #00b1e9;
+    --active-gradient: linear-gradient(180deg, #11bef4 0%, #02d1c5 100%);
+    /**
+     * Light blue
+     */
+    --lightblue: #d5e8fc;
+    --lightblue-hover: #e8f2fd;
+    --lightblue-active: #c6daf0;
+    /**
+     * Dark blue
+     */
+    --darkblue: #27303e;
+    --darkblue-hover: #2c3747;
+    --darkblue-active: #232b38;
+    /**
+     * Gray
+     */
+    --gray: #94a8be;
+    --gray-hover: #9cb2c9;
+    --gray-active: #889db4;
+    --gray-primary: #a3aaae;
+    --gray-8c: #8c99a5;
+    /**
+     * Light gray
+     */
+    --lightgray: #e1e4e7;
+    --lightgray-hover: #eff0f1;
+    --lightgray-active: #d1d5d8;
+    --lightgray-secondary: #f0f0f0;
+    /**
+     * Red
+     */
+    --red: #ff3055;
+    --red-hover: #ff3055;
+    --red-active: #ec4362;
+    /**
+     * Light red
+     */
+    --lightred: #ffe0e6;
+    --lightred-hover: #ffe9ed;
+    --lightred-active: #fcd8df;
+    /**
+     * Green
+     */
+    --green: #00bf41;
+    --green-hover: #01c944;
+    --green-active: #02ac3b;
+    /**
+     * Yellow
+     */
+    --yellow: #f2c94c;
+    --yellow-hover: #f7d05b;
+    --yellow-active: #e6bd45;
+    --light-gray: #e2e2e2;
+    --middle-gray: #e7eaec;
+    --light-blue: #d5e8fc;
+    --blue: #2f88f0;
+    --secondary-light-gray: #e1e4e7;
+    --secondary-web-ligth-sky: #f8fbfc;
+    --others-destructive: #ff3055;
+    --others-green: #00bf41;
+    --others-turquoise: #00B1E9;
+    --others-turquoise-active: linear-gradient(180deg, #11BEF4 0%, #02D1C5 100%);
+}
