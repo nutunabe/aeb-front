@@ -11,27 +11,17 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 export class SignInComponent {
     login: string;
-    password: string;
-    mode;
+    password1: string;
+    pass1_type: boolean = true;
 
     constructor(private authService: AuthService, private router: Router, private route: ActivatedRoute) { }
 
-    ngOnInit() {
-        this.route.data.subscribe(v => {
-            if (v.mode == false) {
-                this.Logout();
-            }
-        });
+    togglePassField1() {
+        this.pass1_type = !this.pass1_type;
     }
 
     onSubmit(form: NgForm) {
         console.log("you are logging in");
-        this.authService.login(form.value.login, form.value.password);
-    }
-
-    Logout() {
-        console.log("AAAAAAAAAAAA")
-        this.authService.logout();
-        this.router.navigate(['/'], { state: { auth: true } });
+        // this.authService.login(form.value.login, form.value.password);
     }
 }
