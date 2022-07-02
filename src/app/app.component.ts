@@ -29,11 +29,8 @@ export class AppComponent {
     includeMenu: boolean = false;
     includeBottom: boolean = true;
     togglePadding: boolean = true;
-    auth;
 
     ngDoCheck() {
-        this.auth = history.state.auth;
-        console.log(this.auth);
         if (this.router.url === '/signup' || this.router.url === '/signin') {
             this.togglePadding = false;
             this.includeHeader = false;

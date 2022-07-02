@@ -1,6 +1,6 @@
 /*              BUTTONS             */
 .primary-button {
-    font-family: "Montserrat";
+    /* font-family: "Montserrat_web"; */
     box-sizing: border-box;
     display: inline-block;
     height: 56px;
@@ -20,7 +20,7 @@
 }
 
 .primary-button--solid {
-    font-family: "Montserrat";
+    /* font-family: "Montserrat_web"; */
     box-sizing: border-box;
     display: inline-block;
     height: 56px;
@@ -41,9 +41,9 @@
     transition: 0.2s;
 }
 
-/* .primary-button:focus {
+.primary-button:focus {
     outline: none
-} */
+}
 
 /* .primary-button:active {
     border: 1px double transparent;
@@ -76,7 +76,7 @@
 
 
 .primary-button--solid--disabled {
-    font-family: "Montserrat";
+    /* font-family: "Montserrat_web"; */
     box-sizing: border-box;
     display: inline-block;
     height: 56px;
@@ -144,12 +144,11 @@
 /*              TEXT FIELDS             */
 input[type="text"],
 input[type="password"] {
-    font-family: "Montserrat";
+    /* font-family: "Montserrat_web"; */
     font-size: 20px;
     padding: 0 16px;
     height: 48px;
     width: 100%;
-    background-color: var(--background);
     border-radius: 8px;
     border: 1px solid var(--text3);
     color: var(--text3);
@@ -173,4 +172,38 @@ input[type="password"]:focus::placeholder {
 
 input.ng-touched.ng-pristine.ng-invalid {
     border: 1px solid var(--error);
+}
+
+input.ng-touched.ng-dirty.ng-invalid {
+    border: 1px solid var(--error);
+}
+
+input.error {
+    border: 1px solid var(--error);
+}
+
+form i {
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 48px;
+    height: 48px;
+    margin-left: -48px;
+    stroke: var(--white);
+    cursor: pointer;
+}
+
+form i.eye {
+    background-image: url('assets/images/show_input.svg');
+    transition: 0.1s;
+}
+
+form i.eye-slash {
+    background-image: url('assets/images/show_input_slash.svg');
+    transition: 0.1s;
+}
+
+.password-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
 }

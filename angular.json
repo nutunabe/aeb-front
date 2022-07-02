@@ -19,7 +19,8 @@
                             "src/styles.css",
                             "src/variables_swap.css",
                             "src/inputs.css",
-                            "src/spinner.css"
+                            "src/spinner.css",
+                            "src/fonts.css"
                         ],
                         "assets": [
                             "src/assets"

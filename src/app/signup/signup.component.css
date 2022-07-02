@@ -1,38 +1,37 @@
 :host {
     height: 100vh;
+    width: 100vw;
     display: flex;
-    align-items: center;
     justify-content: center;
+    background-color: var(--footer-background);
 }
 
 .form-panel {
+    margin-top: 104px;
+    width: 410px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    margin-top: -144px;
 }
 
 form {
+    width: 100%;
     margin-top: 40px;
-    padding: 40px;
+    padding: 0 40px 40px 40px;
     display: flex;
     flex-direction: column;
-    background-color: var(--footer-background);
-    justify-content: center;
+    background-color: var(--background);
     align-items: center;
     border-radius: 16px;
 }
 
 input[type="text"],
 input[type="password"] {
-    background-color: var(--footer-background);
+    background-color: var(--background);
     height: 48px;
-    width: 330px;
 }
 
-input[type="text"].email,
-input[type="password"],
-input[type="submit"] {
+input,
+i {
     margin-top: 40px;
 }

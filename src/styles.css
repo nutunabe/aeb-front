@@ -1,16 +1,18 @@
 * {
     margin: 0;
     box-sizing: border-box;
+    font-family: "Montserrat_web";
+    font-style: normal;
 }
 
 html {
-    font-family: "Montserrat";
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     color: var(--text1);
 }
 
 .container {
+    min-width: 1150px;
     max-width: 1200px;
     padding-right: 15px;
     padding-left: 15px;
