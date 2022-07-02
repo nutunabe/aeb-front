@@ -17,8 +17,7 @@ const appRoutes: Routes = [
     { path: '', component: MainComponent },
     { path: 'resume', component: ResumeComponent },
     { path: 'signup', component: SignUpComponent },
-    { path: 'signin', component: SignInComponent, data: { mode: true } },
-    { path: 'signout', component: SignInComponent, data: { mode: false } }
+    { path: 'signin', component: SignInComponent }
 ];
 
 @NgModule({

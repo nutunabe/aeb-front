@@ -221,7 +221,7 @@ header {
     -webkit-transition: -webkit-transform .3s ease-in-out;
     transition: transform .3s ease-in-out, -webkit-transform .3s ease-in-out;
     z-index: 994;
-    border-bottom: 1px solid var(--footer-background);
+    /* border-bottom: 1px solid var(--footer-background); */
     background: var(--background);
 }
 

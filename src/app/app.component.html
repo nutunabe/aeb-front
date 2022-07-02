@@ -12,11 +12,11 @@
                     </ul>
                 </div>
                 <div class="header-buttons">
-                    <a routerLink="/signin" *ngIf="this.auth==false || this.auth==undefined"><input type="button"
-                            value="Войти" class="primary-button"></a>
-                    <a routerLink="/signup" *ngIf="this.auth==false || this.auth==undefined"><input type="button"
-                            value="Регистрация" class="primary-button--solid"></a>
-                    <a routerLink="/signout" *ngIf="this.auth"><input type="button" value="Выйти"
+                    <a routerLink="/signin" *ngIf="!authService.isLoggedIn"><input type="button" value="Войти"
+                            class="primary-button"></a>
+                    <a routerLink="/signup" *ngIf="!authService.isLoggedIn"><input type="button" value="Регистрация"
+                            class="primary-button--solid"></a>
+                    <a *ngIf="authService.isLoggedIn" (click)="logout()"><input type="button" value="Выйти"
                             class="primary-button--solid"></a>
                 </div>
             </div>

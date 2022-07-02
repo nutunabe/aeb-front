@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from './auth.service';
 
 @Component({
     selector: 'body',
@@ -7,7 +8,7 @@ import { Router } from '@angular/router';
     styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-    constructor(private router: Router) { }
+    constructor(private router: Router, private authService: AuthService) { }
     items = [];
     links = [
         {
@@ -32,13 +33,13 @@ export class AppComponent {
 
     ngDoCheck() {
         if (this.router.url === '/signup' || this.router.url === '/signin') {
-            this.togglePadding = false;
-            this.includeHeader = false;
-            this.includeFooter = false;
+            this.togglePadding = this.includeHeader = this.includeFooter = false;
         } else {
-            this.togglePadding = true;
-            this.includeHeader = true;
-            this.includeFooter = true;
+            this.togglePadding = this.includeHeader = this.includeFooter = true;
         }
+    }
+
+    logout() {
+        this.authService.logout();
     }
 }
