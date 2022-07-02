@@ -2,7 +2,8 @@
     <a routerLink="/"><img [src]="'../assets/images/aeb_lodo_s.svg'"></a>
     <form #myForm="ngForm" novalidate (ngSubmit)="onSubmit(myForm)">
         <input type="text" name="login" [(ngModel)]="login" placeholder="Пользователь" required pattern="^\S+$" />
-        <input type="text" name="email" [(ngModel)]="email" placeholder="Почта" required email />
+        <input type="text" name="email" [(ngModel)]="email" placeholder="Почта" required pattern="^([a-z0-9]+([-_][a-z0-9]+)*)@(([a-z0-9]+(-[a-z0-9]+)*)\.)+[a-z]+$" />
+        <!-- <input type="text" name="email" [(ngModel)]="email" placeholder="Почта" required email /> -->
         <div class="password-container">
             <input [type]="pass1_type?'password':'text'" [class]="!password_equal?'error':''" name="password1"
                 [(ngModel)]="password1" placeholder="Пароль" required pattern="^\S+$" />
