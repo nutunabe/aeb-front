@@ -49,6 +49,6 @@ p {
     color: var(--text3);
 }
 
-svg {
+.content-icon {
     margin-bottom: 24px;
 }
