@@ -27,65 +27,63 @@
     <router-outlet></router-outlet>
 </main>
 <footer class="aeb-footer" *ngIf="includeFooter">
-    <div class="container">
-        <div class="aeb-footer__content">
-            <aeb-footer-top *ngIf="includeTop">
-                <div #content>
-                    <ng-content></ng-content>
-                </div>
-                <div class="aeb-footer-top" *ngIf="!hasContent">
-                    <div class="aeb-footer-top__wrapper">
-                        <div class="aeb-footer-top__column">
-                            <div class="aeb-footer-top__row">
-                                <div class="aeb-footer-top__cell">8 (4112) 34-22-22</div>
-                                <div class="aeb-footer-top__head">Телефон</div>
-                            </div>
+    <div class="aeb-footer__content">
+        <aeb-footer-top *ngIf="includeTop">
+            <div #content>
+                <ng-content></ng-content>
+            </div>
+            <div class="aeb-footer-top" *ngIf="!hasContent">
+                <div class="aeb-footer-top__wrapper">
+                    <div class="aeb-footer-top__column">
+                        <div class="aeb-footer-top__row">
+                            <div class="aeb-footer-top__cell">8 (4112) 34-22-22</div>
+                            <div class="aeb-footer-top__head">Телефон</div>
                         </div>
-                        <div class="aeb-footer-top__column">
-                            <div class="aeb-footer-top__row">
-                                <div class="aeb-footer-top__cell">8 800 100-34-22</div>
-                                <div class="aeb-footer-top__head">Бесплатная горячая линия</div>
-                            </div>
+                    </div>
+                    <div class="aeb-footer-top__column">
+                        <div class="aeb-footer-top__row">
+                            <div class="aeb-footer-top__cell">8 800 100-34-22</div>
+                            <div class="aeb-footer-top__head">Бесплатная горячая линия</div>
                         </div>
-                        <div class="aeb-footer-top__column">
-                            <div class="aeb-footer-top__row">
-                                <div class="aeb-footer-top__cell">bank@albank.ru</div>
-                                <div class="aeb-footer-top__head">Электронная почта</div>
-                            </div>
+                    </div>
+                    <div class="aeb-footer-top__column">
+                        <div class="aeb-footer-top__row">
+                            <div class="aeb-footer-top__cell">bank@albank.ru</div>
+                            <div class="aeb-footer-top__head">Электронная почта</div>
                         </div>
-                        <div class="aeb-footer-top__column">
-                            <div class="aeb-footer-top__row">
-                                <div class="aeb-footer-top__cell">г. Якутск, пр. Ленина, 1</div>
-                                <div class="aeb-footer-top__head">Наш адрес</div>
-                            </div>
+                    </div>
+                    <div class="aeb-footer-top__column">
+                        <div class="aeb-footer-top__row">
+                            <div class="aeb-footer-top__cell">г. Якутск, пр. Ленина, 1</div>
+                            <div class="aeb-footer-top__head">Наш адрес</div>
                         </div>
-                        <div class="aeb-footer-top__app">
-                            <a class="aeb-footer-top__mobile-icon" style="margin:0">
-                                <img class="content-icon" [src]="'/assets/images/aeb_logo_white.svg'">
-                            </a>
-                            <div class="aeb-footer-top__row">
-                                <div class="aeb-footer-top__head"></div>
-                                <div class="aeb-footer-top__cell"></div>
-                            </div>
+                    </div>
+                    <div class="aeb-footer-top__column">
+                        <a class="aeb-footer-top__mobile-icon" style="margin:0">
+                            <img class="content-icon" [src]="'/assets/images/aeb_logo_white.svg'">
+                        </a>
+                        <div class="aeb-footer-top__row">
+                            <div class="aeb-footer-top__head"></div>
+                            <div class="aeb-footer-top__cell"></div>
                         </div>
                     </div>
                 </div>
-            </aeb-footer-top>
-            <aeb-footer-menu [items]="items" *ngIf="includeMenu"></aeb-footer-menu>
-            <aeb-footer-bottom [links]="links" *ngIf="includeBottom">
-                <div #content>
-                    <ng-content></ng-content>
+            </div>
+        </aeb-footer-top>
+        <aeb-footer-menu [items]="items" *ngIf="includeMenu"></aeb-footer-menu>
+        <aeb-footer-bottom [links]="links" *ngIf="includeBottom">
+            <div #content>
+                <ng-content></ng-content>
+            </div>
+            <div *ngIf="!hasContent" class="aeb-footer-bottom">
+                <div class="aeb-footer-bottom__links">
+                    <a class="aeb-footer-bottom__link" *ngFor="let link of links" [href]="link.link">{{ link.name
+                        }}</a>
                 </div>
-                <div *ngIf="!hasContent" class="aeb-footer-bottom">
-                    <div class="aeb-footer-bottom__links">
-                        <a class="aeb-footer-bottom__link" *ngFor="let link of links" [href]="link.link">{{ link.name
-                            }}</a>
-                    </div>
-                    <div class="aeb-footer-bottom__rights">
-                        © 2022 АКБ «Алмазэргиэнбанк» АО. Генеральная лицензия ЦБ РФ №2602 от 08.06.2015
-                    </div>
+                <div class="aeb-footer-bottom__rights">
+                    © 2022 АКБ «Алмазэргиэнбанк» АО. Генеральная лицензия ЦБ РФ №2602 от 08.06.2015
                 </div>
-            </aeb-footer-bottom>
-        </div>
+            </div>
+        </aeb-footer-bottom>
     </div>
 </footer>
