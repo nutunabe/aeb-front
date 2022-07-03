@@ -9,7 +9,7 @@ import { map } from 'rxjs/operators';
 @Injectable()
 export class HttpService {
     auth = 'http://localhost:8080/api/auth/';
-    uri = 'http://localhost:8080/controllers/resume/';
+    api = 'http://localhost:8080/controllers/resume/';
 
     constructor(private http: HttpClient, private cookieService: CookieService, private router: Router) { }
 
@@ -18,7 +18,7 @@ export class HttpService {
     }
 
     postUser(login: string, email: string, password: string) {
-        this.http.post(this.uri + 'signup', { username: login, email: email, password: password })
+        this.http.post(this.auth + 'signup', { username: login, email: email, password: password })
             .subscribe((response: any) => {
                 if (response.message == 'User CREATED') {
                     this.router.navigate(['/']);
@@ -27,7 +27,7 @@ export class HttpService {
     }
 
     getResumes(): Observable<Resume[]> {
-        return this.http.get(this.uri + 'getAll', { headers: this.getHeaders() }).pipe(map((data: any) => {
+        return this.http.get(this.api + 'getAll', { headers: this.getHeaders() }).pipe(map((data: any) => {
             let resumesList = data;
             return resumesList.map(function (resume: any): Resume {
                 return new Resume(
