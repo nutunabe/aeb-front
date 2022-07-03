@@ -13,6 +13,9 @@ import { ResumeComponent } from './resume/resume.component';
 import { SignInComponent } from './signin/signin.component';
 import { SignUpComponent } from './signup/signup.component';
 
+import { NgxMaskModule, IConfig } from 'ngx-mask';
+export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
+
 const appRoutes: Routes = [
     { path: '', component: MainComponent },
     { path: 'resume', component: ResumeComponent },
@@ -21,7 +24,7 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
-    imports: [BrowserModule, FormsModule, AebUiKitModule, RouterModule.forRoot(appRoutes), HttpClientModule],
+    imports: [BrowserModule, FormsModule, AebUiKitModule, RouterModule.forRoot(appRoutes), NgxMaskModule.forRoot(), HttpClientModule],
     declarations: [AppComponent, MainComponent, ResumeComponent, SignInComponent, SignUpComponent],
     bootstrap: [AppComponent],
     providers: [CookieService]

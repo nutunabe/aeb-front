@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import jwt_decode from 'jwt-decode';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -17,6 +18,7 @@ export class AuthService {
                 localStorage.setItem('username', response.username);
                 localStorage.setItem('email', response.email);
                 localStorage.setItem('roles', response.roles);
+                localStorage.setItem('expDate', jwt_decode(response.token)['exp']);
                 this.router.navigate(['/']);
             });
     }
@@ -28,7 +30,12 @@ export class AuthService {
         localStorage.removeItem('username');
         localStorage.removeItem('email');
         localStorage.removeItem('roles');
+        localStorage.removeItem('expDate');
         this.router.navigate(['/']);
+    }
+
+    checkExpiry() {
+        if (Math.floor(Date.now() / 1000) >= +localStorage.getItem('expDate')) { this.logout(); }
     }
 
     public get isLoggedIn(): boolean {

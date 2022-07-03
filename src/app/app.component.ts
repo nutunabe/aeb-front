@@ -1,14 +1,17 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from './auth.service';
+import { HttpService } from './http.service';
+import { Resume } from './resume';
 
 @Component({
     selector: 'body',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.css'],
+    providers: [HttpService]
 })
 export class AppComponent {
-    constructor(private router: Router, private authService: AuthService) { }
+    constructor(private router: Router, private authService: AuthService, private httpService: HttpService) { }
     items = [];
     links = [
         {
@@ -30,6 +33,12 @@ export class AppComponent {
     includeMenu: boolean = false;
     includeBottom: boolean = true;
     togglePadding: boolean = true;
+    resumes: Resume[] = [];
+
+    ngOnInit() {
+        this.authService.checkExpiry();
+        this.httpService.getResumes().subscribe((data: Resume[]) => this.resumes = data);
+    }
 
     ngDoCheck() {
         if (this.router.url === '/signup' || this.router.url === '/signin') {

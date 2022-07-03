@@ -1,6 +1,6 @@
 <div class="container">
     <div class="form-panel">
-        <form>
+        <form #myForm="ngForm" novalidate (ngSubmit)="onSubmit(myForm)">
             <div class="personal-info fields">
                 <h1>Личная информация</h1>
                 <p>При трудоустройстве важна каждая деталь, поэтому созданию резюме необходимо уделить внимание.
@@ -11,15 +11,15 @@
                 <div style="display: flex; flex-direction: row;">
                     <div style="display: flex; flex-direction: column;">
                         <div style="display: flex; flex-direction: row;">
-                            <input type="text" placeholder="Фамилия">
-                            <input type="text" placeholder="Имя">
+                            <input type="text" placeholder="Фамилия" required pattern="^[А-Я][а-я]*$">
+                            <input type="text" placeholder="Имя" required pattern="^[А-Я][а-я]*$">
                         </div>
-                        <input type="text" placeholder="Отчество">
+                        <input type="text" placeholder="Отчество" required pattern="^[А-Я][а-я]*$">
                         <div style="display: flex; flex-direction: row;">
-                            <input type="text" placeholder="Дата Рождения">
-                            <input type="text" placeholder="Номер телефона">
+                            <input type="text" placeholder="Дата Рождения" mask="00.00.0000">
+                            <input type="text" placeholder="Номер телефона" prefix="8" mask=" (000) 000-00-00">
                         </div>
-                        <input type="text" placeholder="Почта">
+                        <input type="text" placeholder="Почта" required pattern="^([a-z0-9]+([-_][a-z0-9]+)*)@(([a-z0-9]+(-[a-z0-9]+)*)\.)+[a-z]+$">
                     </div>
                     <div class="photo-field">
                         <img class="profile-photo" onerror="this.style.display='none'" src="URL">
@@ -29,15 +29,16 @@
             </div>
             <div class="professional-info fields">
                 <h1>Профессиональная информация</h1>
-                <input type="text" placeholder="Образование">
-                <input type="text" placeholder="Учебные работы (темы курсовых / ВКР)">
-                <input type="text" placeholder="Цель">
-                <input type="text" placeholder="Опыт работы">
-                <input type="text" placeholder="Опыт прохождения практик">
-                <input type="text" placeholder="Soft skills">
-                <input type="text" placeholder="Hard skills">
-                <input type="text" placeholder="Знание языков">
+                <input type="text" placeholder="Образование" required>
+                <input type="text" placeholder="Учебные работы (темы курсовых / ВКР)" required>
+                <input type="text" placeholder="Цель" required>
+                <input type="text" placeholder="Опыт работы" required>
+                <input type="text" placeholder="Опыт прохождения практик" required>
+                <input type="text" placeholder="Soft skills" required>
+                <input type="text" placeholder="Hard skills" required>
+                <input type="text" placeholder="Знание языков" required>
             </div>
+            <input type="submit" [disabled]="myForm.invalid" value="Отправить">
         </form>
     </div>
 </div>
