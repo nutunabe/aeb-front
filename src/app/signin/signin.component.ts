@@ -7,7 +7,6 @@ import { AuthService } from '../auth.service';
     templateUrl: './signin.component.html',
     styleUrls: ['./signin.component.css'],
 })
-
 export class SignInComponent {
     login: string;
     password1: string;

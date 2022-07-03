@@ -8,7 +8,6 @@ import { HttpService } from '../http.service';
     styleUrls: ['./signup.component.css'],
     providers: [HttpService]
 })
-
 export class SignUpComponent {
     login: string;
     email: string;
