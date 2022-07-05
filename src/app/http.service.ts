@@ -9,7 +9,7 @@ import { map } from 'rxjs/operators';
 @Injectable()
 export class HttpService {
     auth = 'http://localhost:8080/api/auth/';
-    api = 'http://localhost:8080/controllers/resume/';
+    api = 'http://localhost:8080/controllers/';
 
     constructor(private http: HttpClient, private cookieService: CookieService, private router: Router) { }
 
@@ -26,18 +26,41 @@ export class HttpService {
             });
     }
 
+    postResume(resume: Resume) {
+        this.http.post(this.api + 'resume/add', {
+            firstName: resume.firstName,
+            secondName: resume.secondName,
+            patronymic: resume.patronymic,
+            birthdate: resume.birthdate,
+            phoneNumber: resume.phoneNumber,
+            email: resume.email,
+            eduGroup: resume.eduGroup,
+            education: resume.education,
+            eduWorks: resume.eduWorks,
+            goal: resume.goal,
+            expWork: resume.expWork,
+            expPractice: resume.expPractice,
+            softSkills: resume.softSkills,
+            hardSkills: resume.hardSkills,
+            langKnowledge: resume.langKnowledge,
+            imgUrl: resume.imgUrl
+        }, { headers: this.getHeaders() }).subscribe((response: any) => {
+            console.log(response);
+        });
+    }
+
     getResumes(): Observable<Resume[]> {
-        return this.http.get(this.api + 'getAll', { headers: this.getHeaders() }).pipe(map((data: any) => {
+        return this.http.get(this.api + 'resume/getAll', { headers: this.getHeaders() }).pipe(map((data: any) => {
             let resumesList = data;
             return resumesList.map(function (resume: any): Resume {
                 return new Resume(
-                    resume.id,
                     resume.firstName,
                     resume.secondName,
                     resume.patronymic,
                     resume.birthdate,
                     resume.phoneNumber,
                     resume.email,
+                    resume.eduGroup,
                     resume.education,
                     resume.eduWorks,
                     resume.goal,
@@ -46,7 +69,8 @@ export class HttpService {
                     resume.softSkills,
                     resume.hardSkills,
                     resume.langKnowledge,
-                    resume.imgUrl
+                    resume.imgUrl,
+                    resume.id
                 )
             })
         }));

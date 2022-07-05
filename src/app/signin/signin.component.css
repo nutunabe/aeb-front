@@ -3,7 +3,7 @@
     width: 100vw;
     display: flex;
     justify-content: center;
-    background-color: var(--footer-background);
+    background-color: var(--background);
 }
 
 .form-panel {
@@ -20,14 +20,14 @@ form {
     padding: 0 40px 40px 40px;
     display: flex;
     flex-direction: column;
-    background-color: var(--background);
+    background-color: var(--footer-background);
     align-items: center;
     border-radius: 16px;
 }
 
 input[type="text"],
 input[type="password"] {
-    background-color: var(--background);
+    background-color: var(--footer-background);
     height: 48px;
 }
 

@@ -13,6 +13,8 @@ import { ResumeComponent } from './resume/resume.component';
 import { SignInComponent } from './signin/signin.component';
 import { SignUpComponent } from './signup/signup.component';
 
+import { ReactiveFormsModule }   from '@angular/forms';
+
 import { NgxMaskModule, IConfig } from 'ngx-mask';
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 
@@ -24,7 +26,7 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
-    imports: [BrowserModule, FormsModule, AebUiKitModule, RouterModule.forRoot(appRoutes), NgxMaskModule.forRoot(), HttpClientModule],
+    imports: [BrowserModule, FormsModule, AebUiKitModule, RouterModule.forRoot(appRoutes), NgxMaskModule.forRoot(), HttpClientModule, ReactiveFormsModule],
     declarations: [AppComponent, MainComponent, ResumeComponent, SignInComponent, SignUpComponent],
     bootstrap: [AppComponent],
     providers: [CookieService]

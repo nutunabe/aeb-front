@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
     <div class="form-panel">
         <form #myForm="ngForm" novalidate (ngSubmit)="onSubmit(myForm)">
             <div class="personal-info fields">
@@ -11,15 +11,15 @@
                 <div style="display: flex; flex-direction: row;">
                     <div style="display: flex; flex-direction: column;">
                         <div style="display: flex; flex-direction: row;">
-                            <input type="text" placeholder="Фамилия" required pattern="^[А-Я][а-я]*$">
-                            <input type="text" placeholder="Имя" required pattern="^[А-Я][а-я]*$">
+                            <input type="text" name="secondName" ngModel placeholder="Фамилия" required pattern="^[А-Я][а-я]*$">
+                            <input type="text" name="firstName" ngModel placeholder="Имя" required pattern="^[А-Я][а-я]*$">
                         </div>
-                        <input type="text" placeholder="Отчество" required pattern="^[А-Я][а-я]*$">
+                        <input type="text" name="" ngModel placeholder="Отчество" required pattern="^[А-Я][а-я]*$">
                         <div style="display: flex; flex-direction: row;">
-                            <input type="text" placeholder="Дата Рождения" mask="00.00.0000">
-                            <input type="text" placeholder="Номер телефона" prefix="8" mask=" (000) 000-00-00">
+                            <input type="text" name="" ngModel placeholder="Дата Рождения" mask="00.00.0000">
+                            <input type="text" name="" ngModel placeholder="Номер телефона" prefix="+7" mask=" (000) 000-00-00">
                         </div>
-                        <input type="text" placeholder="Почта" required pattern="^([a-z0-9]+([-_][a-z0-9]+)*)@(([a-z0-9]+(-[a-z0-9]+)*)\.)+[a-z]+$">
+                        <input type="text" name="" ngModel placeholder="Почта" required pattern="^([a-z0-9]+([-_][a-z0-9]+)*)@(([a-z0-9]+(-[a-z0-9]+)*)\.)+[a-z]+$">
                     </div>
                     <div class="photo-field">
                         <img class="profile-photo" onerror="this.style.display='none'" src="URL">
@@ -29,16 +29,116 @@
             </div>
             <div class="professional-info fields">
                 <h1>Профессиональная информация</h1>
-                <input type="text" placeholder="Образование" required>
-                <input type="text" placeholder="Учебные работы (темы курсовых / ВКР)" required>
-                <input type="text" placeholder="Цель" required>
-                <input type="text" placeholder="Опыт работы" required>
-                <input type="text" placeholder="Опыт прохождения практик" required>
-                <input type="text" placeholder="Soft skills" required>
-                <input type="text" placeholder="Hard skills" required>
-                <input type="text" placeholder="Знание языков" required>
+                <input type="text" name="" ngModel placeholder="Образование" required>
+                <input type="text" name="" ngModel placeholder="Учебные работы (темы курсовых / ВКР)" required>
+                <input type="text" name="" ngModel placeholder="Цель" required>
+                <input type="text" name="" ngModel placeholder="Опыт работы" required>
+                <input type="text" name="" ngModel placeholder="Опыт прохождения практик" required>
+                <input type="text" name="" ngModel placeholder="Soft skills" required>
+                <input type="text" name="" ngModel placeholder="Hard skills" required>
+                <input type="text" name="" ngModel placeholder="Знание языков" required>
             </div>
             <input type="submit" [disabled]="myForm.invalid" value="Отправить">
+        </form>
+    </div>
+</div> -->
+
+<div class="container">
+    <div class="form-panel">
+        <form [formGroup]="myForm">
+            <div class="personal-info fields">
+                <h1>Личная информация</h1>
+                <p>При трудоустройстве важна каждая деталь, поэтому созданию резюме необходимо уделить внимание.
+                    Впечатление
+                    создаётся вовсе не после полного прочтения, а уже в первые секунды, пока взгляд скользит по наиболее
+                    важным
+                    для работодателя блокам. </p>
+                <div class="form-group">
+                    <label>Фамилия</label>
+                    <input class="form-control" name="secondName" formControlName="secondName">
+                </div>
+                <div class="form-group">
+                    <label>Имя</label>
+                    <input class="form-control" name="firstName" formControlName="firstName">
+                </div>
+                <div class="form-group">
+                    <label>Отчество</label>
+                    <input class="form-control" name="patronymic" formControlName="patronymic">
+                </div>
+                <div class="form-group">
+                    <label>Дата рождения</label>
+                    <input class="form-control" name="birthdate" formControlName="birthdate"
+                        [dropSpecialCharacters]="false" mask="00.00.0000">
+                </div>
+                <div class="form-group">
+                    <label>Номер телефона</label>
+                    <input class="form-control" name="phoneNumber" formControlName="phoneNumber"
+                        mask="0 (000) 000-00-00">
+                </div>
+                <div class="form-group">
+                    <label>Электронная почта</label>
+                    <input class="form-control" name="email" formControlName="email">
+                </div>
+                <div class="form-group">
+                    <label>Учебная группа</label>
+                    <input class="form-control" name="eduGroup" formControlName="eduGroup">
+                </div>
+                <div class="photo-field">
+                    <img class="profile-photo" onerror="this.style.display='none'" src="URL">
+                    <a class="profile-photo-href" href="#">Добавить фото</a>
+                </div>
+            </div>
+            <div class="professional-info fields">
+                <h1>Профессиональная информация</h1>
+                <!-- <div class="form-group">
+                <input class="form-control" name="education" formControlName="education" placeholder="Образование">
+                </div> -->
+                <div class="form-group">
+                    <div formArrayName="education">
+                        <div class="form-group" *ngFor="let edu of getFormsControls()['controls']; let i = index">
+                            <label>Образование {{i+1}}</label>
+                            <input class="form-control" formControlName="{{i}}" />
+                        </div>
+                    </div>
+                    <div class="add-edu-button">
+                        <button class="primary-button" (click)="addEducation()">
+                            +
+                        </button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Учебные работы (темы курсовых / ВКР)</label>
+                    <input class="form-control" name="eduWorks" formControlName="eduWorks">
+                </div>
+                <div class="form-group">
+                    <label>Цель</label>
+                    <input class="form-control" name="goal" formControlName="goal">
+                </div>
+                <div class="form-group">
+                    <label>Опыт работы</label>
+                    <input class="form-control" name="expWork" formControlName="expWork">
+                </div>
+                <div class="form-group">
+                    <label>Опыт прохождения практик</label>
+                    <input class="form-control" name="expPractice" formControlName="expPractice">
+                </div>
+                <div class="form-group">
+                    <label>Soft skills</label>
+                    <input class="form-control" name="softSkills" formControlName="softSkills">
+                </div>
+                <div class="form-group">
+                    <label>Hard skills</label>
+                    <input class="form-control" name="hardSkills" formControlName="hardSkills">
+                </div>
+                <div class="form-group">
+                    <label>Знание языков</label>
+                    <input class="form-control" name="langKnowledge" formControlName="langKnowledge">
+                </div>
+            </div>
+            <div class="form-group">
+                <button [class]="myForm.invalid?'primary-button--solid--disabled':'primary-button--solid'"
+                    [disabled]="myForm.invalid" (click)="submit()">Отправить</button>
+            </div>
         </form>
     </div>
 </div>
