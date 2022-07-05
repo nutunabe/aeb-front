@@ -17,6 +17,8 @@
                     <a routerLink="/signup" *ngIf="!authService.isLoggedIn"><input type="button" value="Регистрация"
                             class="primary-button--solid"></a>
                     <a *ngIf="authService.isLoggedIn" (click)="logout()"><input type="button" value="Выйти"
+                            class="primary-button"></a>
+                    <a routerLink="/student" *ngIf="authService.isLoggedIn"><input type="button" value="Личный кабинет"
                             class="primary-button--solid"></a>
                 </div>
             </div>
