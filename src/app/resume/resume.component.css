@@ -28,9 +28,12 @@ form {
 }
 
 .form-control {
+    width: 700px;
     background-color: var(--footer-background);
     height: 48px;
 }
+
+textarea { resize: vertical; }
 
 .photo-field {
     /* margin: 16px 0 16px 16px; */
@@ -72,4 +75,5 @@ h1,
     padding: 0;
     border: 1px solid var(--blue2);
     border-radius: 4px;
+    background-color: var(--footer-background);
 }
