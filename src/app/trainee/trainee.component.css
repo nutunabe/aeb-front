@@ -1,0 +1,136 @@
+
+.maintext {
+    color: #FFFF;
+    font-size: 40px;
+    font-weight: 500;
+    text-align: center;
+    padding-top: 75px;
+}
+
+.podmain {
+    color: #A3AAAE;
+    font-size: 24px;
+    font-weight: 100;
+    text-align: center;
+    padding-top: 50px;
+}
+
+/*css carousel*/
+
+.carousel-container {
+    top: 50px;
+    position: relative;
+    margin: auto;
+    text-align: center;
+    width: 100%;   
+    border-radius: 15px;
+}
+
+.carousel-container img {
+    display: none;
+    border-radius: 15px;
+}
+
+.carousel-container img.image-active {
+    display: block;
+    width: 100%;
+}
+
+.btn-carousel {
+    position: relative;
+    bottom: 0;
+    display: flex;  
+    border: 0;
+    cursor: pointer;
+    align-items: center;
+    margin: auto;
+}
+
+.btn-container{
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.btn-prev {
+    background: url("/assets/images/trainee/left-nonactive.svg");
+    display: flex;
+    right: 5%;
+    top: 66px;
+    width: 66px;
+    height: 66px;
+}
+
+.btn-next {
+    background: url("/assets/images/trainee/right-nonactive.svg");
+    display: flex;
+    left: 5%;
+    width: 66px;
+    height: 66px;
+}
+
+.btn-prev:hover{
+    background: url("/assets/images/trainee/left-active.svg");
+}
+
+.btn-next:hover{
+    background: url("/assets/images/trainee/right-active.svg");
+}
+
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@keyframes fade {
+    from {
+        opacity: 0.4;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+/*css instrument*/
+
+#rectangle{
+    display: flex;
+    position: relative;
+    height: 280px;
+    width: 1200px;
+    background:white;
+    border-radius: 5px;
+    margin: auto;
+    top: 30px;
+    text-align: justify;
+    margin-bottom: 10%;
+    margin-top: 28px;
+}
+
+.btn {
+    position: relative;
+    border: 0;
+    background: white;
+    width: 30%;
+    height: 30%;
+    margin: 1% 1.66%;
+    float: left;
+    top: 40px;
+    cursor: pointer;
+}
+
+.btn img {
+    width: 75%;
+    height: 75%;
+}
+
+.textins {
+    margin-top: 10px;
+    color: black;   
+    text-align: center;
+    position: absolute;
+    top: 65%;
+    width: 65%;
+    left: 17.5%;
+}

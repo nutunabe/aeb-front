@@ -20,7 +20,7 @@ export class AppComponent {
         },
         {
             name: 'Служба поддержки',
-            link: '#'
+            link: 'https://www.albank.ru/ru/feedback/'
         },
         {
             name: 'Политика конфидениальности',
@@ -51,4 +51,6 @@ export class AppComponent {
     logout() {
         this.authService.logout();
     }
+
+    
 }
