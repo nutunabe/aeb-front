@@ -44,8 +44,7 @@ export class HttpService {
             hardSkills: resume.hardSkills,
             langKnowledge: resume.langKnowledge,
             imgUrl: resume.imgUrl,
-            id: resume.id,
-            resumeStatus: 1
+            id: resume.id
         }, { headers: this.getHeaders() }).subscribe((response: any) => {
             console.log(response);
         });
