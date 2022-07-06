@@ -1,6 +1,7 @@
 <div class="container">
     <a routerLink="/resume" *ngIf="resume==undefined || resume.secondName==undefined">Заполнить резюме</a>
     <div *ngIf="resume!=undefined && resume.secondName!=undefined">
+        <a routerLink="/resume">Редактировать резюме</a>
         <h1>Инфа</h1>
         <p>Фамилия: {{resume.secondName}}</p>
         <p>Имя: {{resume.firstName}}</p>
