@@ -37,7 +37,7 @@ export class AppComponent {
 
     ngOnInit() {
         this.authService.checkExpiry();
-        this.httpService.getResumes().subscribe((data: Resume[]) => this.resumes = data);
+        // this.httpService.getResumes().subscribe((data: Resume[]) => this.resumes = data);
     }
 
     ngDoCheck() {

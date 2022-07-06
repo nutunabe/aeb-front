@@ -72,5 +72,12 @@
                 </div>
             </div>
         </div>
+        <div class="content bottom">
+            <div style="width: 100%;">
+                <h2 style="text-align: center;">Заполнить резюме и анкету вы можете в<br><a routerLink="/student"
+                        *ngIf="authService.isLoggedIn">личном кабинете</a><a routerLink="/signin"
+                        *ngIf="!authService.isLoggedIn">личном кабинете</a></h2>
+            </div>
+        </div>
     </div>
 </div>
