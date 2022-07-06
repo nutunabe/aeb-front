@@ -1,0 +1,37 @@
+<div class='container'>
+    <h1 class="maintext">Посмотрите актуальные вакансии для стажера</h1>
+    <h2 class ="podmain">Вы так же можете пройти полное собеседование по этим вакансиям</h2>
+    <div *ngIf="images && images.length > 0" class="carousel-container">
+        <a *ngFor="let image of images; let i=index" [href]="image.url">
+            <img  
+            [src]="image.imageSrc" [alt]="image.imageAlt"
+            [ngClass]="{'image-active':selectedIndex === i}"
+            class="fade" 
+        >
+        </a>
+    </div>
+    <div class = "btn-container">
+        <button *ngIf="controls" class ="btn-carousel btn-prev" 
+        (click)="onPrevClick()">
+        </button>
+
+        <button *ngIf="controls" class ="btn-carousel btn-next"
+        (click)="onNextClick()">
+        </button>
+    </div>
+    <div class="maintext">Поинтересуйтесь нашим стеком технологий</div>
+    <div class="podmain">С чем мы работаем</div>
+    <div class="instr-container">
+        <div id="rectangle">
+            <button (click) = "showmessage(0)" class="btn"><img class="csharp" src="/assets/images/trainee/csharp/csharp.svg"></button>
+            <button (click) = "showmessage(4)" class="btn"><img class="java" src="/assets/images/trainee/java/java.svg"></button>
+            <button (click) = "showmessage(5)" class="btn"><img class="kotlin" src="/assets/images/trainee/kotlin/kotlin.svg"></button>
+            <button (click) = "showmessage(6)" class="btn"><img class="net" src="/assets/images/trainee/net/net.svg"></button>
+            <button (click) = "showmessage(3)" class="btn"><img class="swift" src="/assets/images/trainee/swift/swift.svg"></button>
+            <button (click) = "showmessage(2)" class="btn"><img class="ts" src="/assets/images/trainee/ts/ts.svg"></button>
+            <button (click) = "showmessage(1)" class="btn"><img class="js" src="/assets/images/trainee/js/js.svg"></button>
+            <button (click) = "showmessage(7)" class="btn"><img class="sql" src="/assets/images/trainee/sql/sql.svg"></button>
+            <div class = "textins">{{inss}}</div>
+        </div>
+    </div>
+</div>

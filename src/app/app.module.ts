@@ -13,6 +13,8 @@ import { ResumeComponent } from './resume/resume.component';
 import { SignInComponent } from './signin/signin.component';
 import { SignUpComponent } from './signup/signup.component';
 import { StudentComponent } from './student/student.component';
+import { TraineeComponent } from './trainee/trainee.component';
+import { FaqComponent } from './faq/faq.component';
 
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -24,12 +26,19 @@ const appRoutes: Routes = [
     { path: 'resume', component: ResumeComponent },
     { path: 'signup', component: SignUpComponent },
     { path: 'signin', component: SignInComponent },
-    { path: 'student', component: StudentComponent }
+    { path: 'student', component: StudentComponent },
+    { path: 'trainee', component: TraineeComponent }
 ];
 
 @NgModule({
-    imports: [BrowserModule, FormsModule, AebUiKitModule, RouterModule.forRoot(appRoutes), NgxMaskModule.forRoot(), HttpClientModule, ReactiveFormsModule],
-    declarations: [AppComponent, MainComponent, ResumeComponent, SignInComponent, SignUpComponent, StudentComponent],
+    imports: [BrowserModule, FormsModule, AebUiKitModule, 
+        RouterModule.forRoot(appRoutes), 
+        NgxMaskModule.forRoot(), 
+        HttpClientModule, ReactiveFormsModule],
+    declarations: [AppComponent, MainComponent, 
+        ResumeComponent, SignInComponent, 
+        SignUpComponent, StudentComponent, 
+        TraineeComponent, FaqComponent],
     bootstrap: [AppComponent],
     providers: [CookieService]
 })
