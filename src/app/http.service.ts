@@ -26,8 +26,8 @@ export class HttpService {
             });
     }
 
-    postResume(resume: Resume) {
-        this.http.post(this.api + 'resume/add', {
+    updateResume(resume: Resume) {
+        this.http.put(this.api + 'resume/update', {
             firstName: resume.firstName,
             secondName: resume.secondName,
             patronymic: resume.patronymic,
@@ -43,10 +43,41 @@ export class HttpService {
             softSkills: resume.softSkills,
             hardSkills: resume.hardSkills,
             langKnowledge: resume.langKnowledge,
-            imgUrl: resume.imgUrl
+            imgUrl: resume.imgUrl,
+            id: resume.id,
+            resumeStatus: 1
         }, { headers: this.getHeaders() }).subscribe((response: any) => {
             console.log(response);
         });
+    }
+
+    getResume(id: number): Observable<Resume> {
+        return this.http.get(this.api + 'resume/get/' + id, { headers: this.getHeaders() })
+            .pipe(
+                map((resume: any) => {
+                    const [year, month, day] = resume.birthdate.split('-');
+                    const birthdate = [day, month, year].join('.');
+                    return new Resume(
+                        resume.firstName,
+                        resume.secondName,
+                        resume.patronymic,
+                        birthdate,
+                        resume.phoneNumber,
+                        resume.email,
+                        resume.eduGroup,
+                        resume.education,
+                        resume.eduWorks,
+                        resume.goal,
+                        resume.expWork,
+                        resume.expPractice,
+                        resume.softSkills,
+                        resume.hardSkills,
+                        resume.langKnowledge,
+                        resume.imgUrl,
+                        resume.id,
+                        resume.resumeStatus
+                    )
+                }));
     }
 
     getResumes(): Observable<Resume[]> {
@@ -70,7 +101,8 @@ export class HttpService {
                     resume.hardSkills,
                     resume.langKnowledge,
                     resume.imgUrl,
-                    resume.id
+                    resume.id,
+                    resume.resumeStatus
                 )
             })
         }));

@@ -33,7 +33,11 @@ form {
     height: 48px;
 }
 
-textarea { resize: vertical; }
+textarea {
+    resize: vertical;
+    padding-top: 10px;
+    overflow: hidden;
+}
 
 .photo-field {
     /* margin: 16px 0 16px 16px; */
