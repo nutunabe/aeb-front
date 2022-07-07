@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, Output } from "@angular/core";
 import { Resume } from '../resume';
 import { HttpService } from '../http.service';
  
@@ -9,11 +9,12 @@ import { HttpService } from '../http.service';
     providers: [HttpService]
 })
 
-export class EmployeeComponent {
+export class EmployeeComponent{
+
     constructor(private httpService: HttpService) { }
-    resume: Resume[];
+    resumes: Resume[];
 
     ngOnInit(){
-        this.httpService.getResumes().subscribe((data: Resume[]) => this.resume = data);
+        this.httpService.getResumes().subscribe((data: Resume[]) => this.resumes = data);
     }
 }

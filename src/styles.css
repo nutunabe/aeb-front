@@ -18,7 +18,7 @@ html {
     padding-left: 15px;
     margin-left: auto;
     margin-right: auto;
-    min-height: calc(100vh - 314px);
+    /* min-height: calc(100vh - 314px); */
 }
 
 a {

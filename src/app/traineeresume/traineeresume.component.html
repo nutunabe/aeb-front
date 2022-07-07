@@ -1,0 +1,32 @@
+<div class="container">
+    <div class = "main">
+        <div class = "fai">
+            <p class = "fai2">{{resume.secondName}}</p>
+            <p class = "fai2">{{resume.firstName}}</p>
+        </div>
+            <p class = "ot">{{resume.patronymic}}</p>
+        <div class="fai">
+            <p class = "fai2">{{resume.birthdate}}</p>
+            <p class = "fai2">{{resume.phoneNumber}}</p>
+        </div>
+        <p class = "ot">{{resume.email}}</p>
+        <p class = "pole">{{resume.eduGroup}}</p>
+
+        <p class = "edu" 
+        *ngFor="let edu of resume.education;">{{edu}}</p>
+
+        <p class = "pole">{{resume.eduWorks}}</p>
+        <p class = "pole">{{resume.goal}}</p>
+        <p class = "pole">{{resume.expWork}}</p>
+        <p class = "pole">{{resume.expPractice}}</p>
+        <p class = "pole">{{resume.softSkills}}</p>
+        <p class = "pole">{{resume.hardSkills}}</p>
+        <p class = "pole">{{resume.langKnowledge}}</p>
+        <div class="btn">
+            <div class ="btns">
+                <input type = "button" class = "btn1" value="Принять">
+                <input type = "button" class = "btn2" value="Отклонить">
+            </div>
+        </div>
+    </div>
+</div>

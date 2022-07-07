@@ -9,14 +9,14 @@
             <th>Статус</th>
             <th></th>
         </tr>
-        <tr *ngFor="let i of resume; let j=index">
+        <tr *ngFor="let i of resumes; let j=index">
             <td>{{j+1}}</td>
             <td>{{i.secondName + " " +i.firstName + " " + i.patronymic}}</td>
             <td>{{i.eduGroup}}</td>
             <td>{{i.phoneNumber}}</td>
             <td>{{i.email}}</td>
-            <td>{{i.status}}</td>
-            <input type="button" class="primary-button--solid" value="Подробнее">
+            <input type="button" class="primary-button--solid" 
+            value="Подробнее" [routerLink]="['/trresume', i.id]" >
         </tr>
     </table>
 </div>
