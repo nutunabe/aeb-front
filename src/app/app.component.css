@@ -3,7 +3,7 @@
     width: 100%;
     background-color: var(--footer-background);
     display: flex;
-    justify-content: center
+    justify-content: center;
 }
 
 .aeb-footer__content {
