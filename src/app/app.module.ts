@@ -17,6 +17,7 @@ import { TraineeComponent } from './trainee/trainee.component';
 import { FaqComponent } from './faq/faq.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { ScheduleComponent } from './schedule/schedule.component';
+import { TraineeResumeComponent } from './traineeresume/traineeresume.component';
  
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -32,7 +33,8 @@ const appRoutes: Routes = [
     { path: 'trainee', component: TraineeComponent },
     { path: 'faq', component: FaqComponent },
     { path: 'emp', component: EmployeeComponent },
-    { path: 'schedule', component: ScheduleComponent }
+    { path: 'schedule', component: ScheduleComponent },
+    { path: 'trresume/:id', component: TraineeResumeComponent }
 ];
 
 @NgModule({
@@ -44,7 +46,8 @@ const appRoutes: Routes = [
         ResumeComponent, SignInComponent, 
         SignUpComponent, StudentComponent, 
         TraineeComponent, FaqComponent, 
-        EmployeeComponent,ScheduleComponent],
+        EmployeeComponent,ScheduleComponent,
+        TraineeResumeComponent],
     bootstrap: [AppComponent],
     providers: [CookieService]
 })
