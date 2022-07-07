@@ -1,0 +1,10 @@
+<div class="container">
+    <table *ngFor="let i of resume; let j=index">
+        <p>№: {{j+1}}</p>
+        <p>ФИО: {{i.secondName + " " +i.firstName + " " + i.patronymic}}</p>
+        <p>Группа: {{i.eduGroup}}</p>
+        <p>Номер телефона: {{i.phoneNumber}}</p>
+        <p>Почта: {{i.email}}</p>
+        <p>Статус: {{i.status}}</p>
+    </table>
+</div>

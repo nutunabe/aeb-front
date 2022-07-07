@@ -15,7 +15,9 @@ import { SignUpComponent } from './signup/signup.component';
 import { StudentComponent } from './student/student.component';
 import { TraineeComponent } from './trainee/trainee.component';
 import { FaqComponent } from './faq/faq.component';
-
+import { EmployeeComponent } from './employee/employee.component';
+import { ScheduleComponent } from './schedule/schedule.component';
+ 
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { NgxMaskModule, IConfig } from 'ngx-mask';
@@ -28,7 +30,9 @@ const appRoutes: Routes = [
     { path: 'signin', component: SignInComponent },
     { path: 'student', component: StudentComponent },
     { path: 'trainee', component: TraineeComponent },
-    { path: 'faq', component: FaqComponent }
+    { path: 'faq', component: FaqComponent },
+    { path: 'emp', component: EmployeeComponent },
+    { path: 'schedule', component: ScheduleComponent }
 ];
 
 @NgModule({
@@ -39,7 +43,8 @@ const appRoutes: Routes = [
     declarations: [AppComponent, MainComponent, 
         ResumeComponent, SignInComponent, 
         SignUpComponent, StudentComponent, 
-        TraineeComponent, FaqComponent],
+        TraineeComponent, FaqComponent, 
+        EmployeeComponent,ScheduleComponent],
     bootstrap: [AppComponent],
     providers: [CookieService]
 })
