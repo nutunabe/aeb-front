@@ -1,101 +1,129 @@
 <div class="container">
     <div class="form-panel">
         <form [formGroup]="myForm">
-            <div class="personal-info fields">
-                <h1>Личная информация</h1>
-                <p>При трудоустройстве важна каждая деталь, поэтому созданию резюме необходимо уделить внимание.
-                    Впечатление
-                    создаётся вовсе не после полного прочтения, а уже в первые секунды, пока взгляд скользит по наиболее
-                    важным
-                    для работодателя блокам. </p>
+            <div class="field-group">
                 <div class="form-group">
-                    <label>Фамилия</label>
-                    <input class="form-control" name="secondName" formControlName="secondName">
+                    <h1>Личная информация</h1>
+                    <p style="margin-top: 8px;">При трудоустройстве важна каждая деталь, поэтому созданию резюме
+                        необходимо уделить внимание.
+                        Впечатление
+                        создаётся вовсе не после полного прочтения, а уже в первые секунды, пока взгляд скользит по
+                        наиболее
+                        важным
+                        для работодателя блокам. </p>
                 </div>
-                <div class="form-group">
-                    <label>Имя</label>
-                    <input class="form-control" name="firstName" formControlName="firstName">
+                <div class="row">
+                    <div class="column left">
+                        <div class="form-group" [class]="myForm.value.secondtName!=undefined?'has-value':''">
+                            <label>Фамилия</label>
+                            <input class="form-control" name="secondName" formControlName="secondName"
+                                (focus)="onFocus($event)" (blur)="onBlur($event)">
+                        </div>
+                        <div class="form-group">
+                            <label>Имя</label>
+                            <input class="form-control" name="firstName" formControlName="firstName"
+                                (focus)="onFocus($event)" (blur)="onBlur($event)">
+                        </div>
+                        <div class="form-group">
+                            <label>Отчество</label>
+                            <input class="form-control" name="patronymic" formControlName="patronymic"
+                                (focus)="onFocus($event)" (blur)="onBlur($event)">
+                        </div>
+                        <div class="form-group">
+                            <label>Дата рождения</label>
+                            <input class="form-control" name="birthdate" formControlName="birthdate"
+                                [dropSpecialCharacters]="false" mask="00.00.0000" (focus)="onFocus($event)"
+                                (blur)="onBlur($event)">
+                        </div>
+                    </div>
+                    <div class="form-group photo right" (click)="fileUpload.click()">
+                        <input type="file" (change)="onFileSelected($event)" #fileUpload (focus)="onFocus($event)"
+                            (blur)="onBlur($event)">
+                        <img [src]="avatar" *ngIf="avatar!=undefined" onload="this.style.display='inline'">
+                        <p *ngIf="avatar==undefined">Добавить фото</p>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label>Отчество</label>
-                    <input class="form-control" name="patronymic" formControlName="patronymic">
-                </div>
-                <div class="form-group">
-                    <label>Дата рождения</label>
-                    <input class="form-control" name="birthdate" formControlName="birthdate"
-                        [dropSpecialCharacters]="false" mask="00.00.0000">
-                </div>
-                <div class="form-group">
-                    <label>Номер телефона</label>
-                    <input class="form-control" name="phoneNumber" formControlName="phoneNumber"
-                        mask="0 (000) 000-00-00">
-                </div>
-                <div class="form-group">
-                    <label>Электронная почта</label>
-                    <input class="form-control" name="email" formControlName="email">
+                <div class="row">
+                    <div class="form-group left" style="flex: 1 0 auto">
+                        <label>Номер телефона</label>
+                        <input class="form-control" name="phoneNumber" formControlName="phoneNumber"
+                            mask="0 (000) 000-00-00" (focus)="onFocus($event)" (blur)="onBlur($event)">
+                    </div>
+                    <div class="form-group right" style="flex: 1 0 auto">
+                        <label>Электронная почта</label>
+                        <input class="form-control" name="email" formControlName="email" (focus)="onFocus($event)"
+                            (blur)="onBlur($event)">
+                    </div>
                 </div>
                 <div class="form-group">
                     <label>Учебная группа</label>
-                    <input class="form-control" name="eduGroup" formControlName="eduGroup">
-                </div>
-                <div class="photo-field" (click)="fileUpload.click()">
-                    <img class="profile-photo" [src]="avatar" onload="this.style.display='inline'">
-                    <input type="file" class="file-input" (change)="onFileSelected($event)" #fileUpload>
-                    <a class="profile-photo-href" [style]="avatar?'display:none':'display:inline'">Добавить фото</a>
+                    <input class="form-control" name="eduGroup" formControlName="eduGroup" (focus)="onFocus($event)"
+                        (blur)="onBlur($event)">
                 </div>
             </div>
-            <div class="professional-info fields">
-                <h1>Профессиональная информация</h1>
+            <div class="field-group">
+                <div class="form-group">
+                    <h1>Профессиональная информация</h1>
+                </div>
                 <!-- <div class="form-group">
                 <input class="form-control" name="education" formControlName="education" placeholder="Образование">
                 </div> -->
-                <div class="form-group">
-                    <div formArrayName="education">
-                        <div class="form-group" *ngFor="let edu of getFormsControls()['controls']; let i = index">
-                            <label>Образование {{i+1}}</label>
-                            <input class="form-control" formControlName="{{i}}" />
-                        </div>
+                <div formArrayName="education">
+                    <div class="form-group" *ngFor="let edu of getFormsControls()['controls']; let i = index">
+                        <label>Образование {{i+1}}</label>
+                        <input class="form-control" formControlName="{{i}}" (focus)="onFocus($event)"
+                            (blur)="onBlur($event)">
                     </div>
-                    <div class="add-edu-button">
-                        <button class="primary-button" (click)="addEducation()">
-                            +
-                        </button>
-                    </div>
+                </div>
+                <div class="add-edu">
+                    <button class="primary-button" (click)="popEducation()" style="border-radius: 4px 0 0 4px;"
+                        *ngIf="getEducationLength()>1">
+                        -
+                    </button>
+                    <button class="primary-button" (click)="addEducation()"
+                        style="border-radius: 0 4px 4px 0;margin-left: -1px;" *ngIf="getEducationLength()>1">
+                        +
+                    </button>
+                    <button class="primary-button" (click)="addEducation()" style="border-radius: 4px;"
+                        *ngIf="getEducationLength()==1">
+                        +
+                    </button>
                 </div>
                 <div class="form-group">
                     <label>Учебные работы (темы курсовых / ВКР)</label>
                     <textarea class="form-control" name="eduWorks" formControlName="eduWorks"
-                        (input)="resizeTextArea($event)"></textarea>
+                        (input)="resizeTextArea($event)" (load)="resizeTextArea($event)" (focus)="onFocus($event)"
+                        (blur)="onBlur($event)"></textarea>
                 </div>
                 <div class="form-group">
                     <label>Цель</label>
-                    <textarea class="form-control" name="goal" formControlName="goal"
-                        (input)="resizeTextArea($event)"></textarea>
+                    <textarea class="form-control" name="goal" formControlName="goal" (input)="resizeTextArea($event)"
+                        (focus)="onFocus($event)" (blur)="onBlur($event)"></textarea>
                 </div>
                 <div class="form-group">
                     <label>Опыт работы</label>
                     <textarea class="form-control" name="expWork" formControlName="expWork"
-                        (input)="resizeTextArea($event)"></textarea>
+                        (input)="resizeTextArea($event)" (focus)="onFocus($event)" (blur)="onBlur($event)"></textarea>
                 </div>
                 <div class="form-group">
                     <label>Опыт прохождения практик</label>
                     <textarea class="form-control" name="expPractice" formControlName="expPractice"
-                        (input)="resizeTextArea($event)"></textarea>
+                        (input)="resizeTextArea($event)" (focus)="onFocus($event)" (blur)="onBlur($event)"></textarea>
                 </div>
                 <div class="form-group">
                     <label>Soft skills</label>
                     <textarea class="form-control" name="softSkills" formControlName="softSkills"
-                        (input)="resizeTextArea($event)"></textarea>
+                        (input)="resizeTextArea($event)" (focus)="onFocus($event)" (blur)="onBlur($event)"></textarea>
                 </div>
                 <div class="form-group">
                     <label>Hard skills</label>
                     <textarea class="form-control" name="hardSkills" formControlName="hardSkills"
-                        (input)="resizeTextArea($event)"></textarea>
+                        (input)="resizeTextArea($event)" (focus)="onFocus($event)" (blur)="onBlur($event)"></textarea>
                 </div>
                 <div class="form-group">
                     <label>Знание языков</label>
                     <textarea class="form-control" name="langKnowledge" formControlName="langKnowledge"
-                        (input)="resizeTextArea($event)"></textarea>
+                        (input)="resizeTextArea($event)" (focus)="onFocus($event)" (blur)="onBlur($event)"></textarea>
                 </div>
             </div>
             <div class="form-group">

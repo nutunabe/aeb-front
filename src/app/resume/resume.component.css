@@ -3,34 +3,97 @@
     justify-content: center;
 }
 
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.right {
+    margin-left: 4px;
+}
+
+.left {
+    margin-right: 4px;
+}
+
 .form-panel {
-    margin-top: 40px;
-    margin-bottom: 80px;
-    width: 780px;
     display: flex;
     align-items: center;
+    margin-top: 40px;
+    margin-bottom: 80px;
 }
 
 form {
-    width: 100%;
-    padding: 0 40px 40px 40px;
     display: flex;
     flex-direction: column;
-    background-color: var(--footer-background);
     align-items: center;
+    width: 700px;
+    padding: 0 40px 40px 40px;
     border-radius: 16px;
+    background-color: var(--background);
 }
 
-.fields {
+.field-group {
     width: 100%;
     display: flex;
     flex-direction: column;
+}
+
+.form-group {
+    position: relative;
+    margin-top: 20px;
+}
+
+.form-group label {
+    position: absolute;
+    left: 10px;
+    top: 24px;
+    transform: translateY(-50%);
+    font-size: 18px;
+    background-color: var(--background);
+    padding: 6px;
+    border-radius: 4px;
+    pointer-events: none;
+    color: var(--text3);
+    transition: all .2s cubic-bezier(.4, 0, .2, 1)
+}
+
+.form-group.focused label,
+.form-group.has-value label {
+    transform: translateY(calc(48px / -2 + -50%));
+    font-size: 12px
 }
 
 .form-control {
-    width: 700px;
-    background-color: var(--footer-background);
+    background-color: var(--background);
     height: 48px;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.form-group.photo {
+    width: 200px;
+    height: 252px;
+    background-color: var(--blue);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-group.photo img {
+    width: 100%;
+    height: 100%;
+    display: none;
+    object-fit: cover;
 }
 
 textarea {
@@ -39,51 +102,24 @@ textarea {
     overflow: hidden;
 }
 
-.photo-field {
-    /* margin: 16px 0 16px 16px; */
-    width: 254px;
-    height: 254px;
-    background-color: var(--blue);
-    /* border-radius: 8px; */
-}
-
-.profile-photo {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: none;
-}
-
-.profile-photo-href {
-    color: #fff;
-    cursor: pointer;
-}
-
-h1,
-.form-group {
-    margin-top: 20px;
-}
-
-.add-edu-button {
-    margin-top: -48px;
-    padding: 8px;
+.add-edu {
     display: flex;
-    justify-content: right;
     align-items: center;
+    justify-content: right;
     width: 100%;
     height: 48px;
+    padding: 8px;
+    margin-top: -48px;
+    pointer-events: none;
 }
 
 .primary-button {
+    position: relative;
     font-weight: 500;
-    height: 100%;
+    height: 32px;
     width: 32px;
     padding: 0;
     border: 1px solid var(--blue2);
-    border-radius: 4px;
-    background-color: var(--footer-background);
-}
-
-.file-input {
-    display: none;
+    background-color: var(--background);
+    pointer-events: auto;
 }

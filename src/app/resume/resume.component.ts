@@ -79,7 +79,7 @@ export class ResumeComponent {
             this.myForm.controls['email'].setValue(this.resume.email);
             this.myForm.controls['eduGroup'].setValue(this.resume.eduGroup);
             this.getFormsControls()['controls'][0].setValue(this.resume.education[0]);
-            if (this.resume.education.length > 1) {
+            if (this.getFormsControls()['controls'].length == 1 && this.resume.education.length > 1) {
                 for (let _i = 0; _i < this.resume.education.length - 1; _i++) {
                     this.addEducation();
                     this.getFormsControls()['controls'][_i + 1].setValue(this.resume.education[_i + 1]);
@@ -92,18 +92,66 @@ export class ResumeComponent {
             this.myForm.controls['softSkills'].setValue(this.resume.softSkills);
             this.myForm.controls['hardSkills'].setValue(this.resume.hardSkills);
             this.myForm.controls['langKnowledge'].setValue(this.resume.langKnowledge);
+            this.resizeTextAreas();
         }
+        this.checkInputs();
     }
     getFormsControls(): FormArray {
         return this.myForm.controls['education'] as FormArray;
     }
+    getEducationLength() {
+        return (<FormArray>this.myForm.controls["education"]).length;
+    }
     addEducation() {
         (<FormArray>this.myForm.controls["education"]).push(new FormControl("", Validators.required));
+    }
+    popEducation() {
+        (<FormArray>this.myForm.controls["education"]).removeAt(this.getEducationLength() - 1);
     }
     resizeTextArea(e) {
         e.target.style.height = "0px";
         e.target.style.height = (e.target.scrollHeight + 14) + "px";
     }
+    resizeTextAreas() {
+        let textareas = document.getElementsByTagName('textarea');
+        for (let _i = 0; _i < textareas.length; _i++) {
+            textareas[_i].style.height = "0px";
+            textareas[_i].style.height = (textareas[_i].scrollHeight + 14) + "px";
+        }
+    }
+    onFocus(e) {
+        (e.target.parentNode as HTMLElement).classList.add('focused');
+    }
+    onBlur(e) {
+        (e.target.parentNode as HTMLElement).classList.remove('focused');
+        var inputValue = (e.target as HTMLInputElement).value;
+        if (inputValue == "") {
+            (e.target.parentNode as HTMLElement).classList.remove('has-value');
+        } else {
+            (e.target.parentNode as HTMLElement).classList.add('has-value');
+        }
+    }
+    checkInputs() {
+        let inputs = document.getElementsByTagName('input');
+        for (let _i = 0; _i < inputs.length; _i++) {
+            let inputValue = (inputs[_i] as HTMLInputElement).value;
+            if (inputValue == "") {
+                (inputs[_i].parentNode as HTMLElement).classList.remove('has-value');
+            } else {
+                (inputs[_i].parentNode as HTMLElement).classList.add('has-value');
+            }
+        }
+        let textareas = document.getElementsByTagName('textarea');
+        for (let _i = 0; _i < textareas.length; _i++) {
+            let inputValue = (textareas[_i] as HTMLTextAreaElement).value;
+            if (inputValue == "") {
+                (textareas[_i].parentNode as HTMLElement).classList.remove('has-value');
+            } else {
+                (textareas[_i].parentNode as HTMLElement).classList.add('has-value');
+            }
+        }
+    }
+    on
     submit() {
         const [day, month, year] = this.myForm.value.birthdate.split('.');
         const birthdate = [year, month, day].join('-');
