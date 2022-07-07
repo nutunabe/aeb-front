@@ -1,48 +1,3 @@
-<!-- <div class="container">
-    <div class="form-panel">
-        <form #myForm="ngForm" novalidate (ngSubmit)="onSubmit(myForm)">
-            <div class="personal-info fields">
-                <h1>Личная информация</h1>
-                <p>При трудоустройстве важна каждая деталь, поэтому созданию резюме необходимо уделить внимание.
-                    Впечатление
-                    создаётся вовсе не после полного прочтения, а уже в первые секунды, пока взгляд скользит по наиболее
-                    важным
-                    для работодателя блокам. </p>
-                <div style="display: flex; flex-direction: row;">
-                    <div style="display: flex; flex-direction: column;">
-                        <div style="display: flex; flex-direction: row;">
-                            <input type="text" name="secondName" ngModel placeholder="Фамилия" required pattern="^[А-Я][а-я]*$">
-                            <input type="text" name="firstName" ngModel placeholder="Имя" required pattern="^[А-Я][а-я]*$">
-                        </div>
-                        <input type="text" name="" ngModel placeholder="Отчество" required pattern="^[А-Я][а-я]*$">
-                        <div style="display: flex; flex-direction: row;">
-                            <input type="text" name="" ngModel placeholder="Дата Рождения" mask="00.00.0000">
-                            <input type="text" name="" ngModel placeholder="Номер телефона" prefix="+7" mask=" (000) 000-00-00">
-                        </div>
-                        <input type="text" name="" ngModel placeholder="Почта" required pattern="^([a-z0-9]+([-_][a-z0-9]+)*)@(([a-z0-9]+(-[a-z0-9]+)*)\.)+[a-z]+$">
-                    </div>
-                    <div class="photo-field">
-                        <img class="profile-photo" onerror="this.style.display='none'" src="URL">
-                        <a class="profile-photo-href" href="#">Добавить фото</a>
-                    </div>
-                </div>
-            </div>
-            <div class="professional-info fields">
-                <h1>Профессиональная информация</h1>
-                <input type="text" name="" ngModel placeholder="Образование" required>
-                <input type="text" name="" ngModel placeholder="Учебные работы (темы курсовых / ВКР)" required>
-                <input type="text" name="" ngModel placeholder="Цель" required>
-                <input type="text" name="" ngModel placeholder="Опыт работы" required>
-                <input type="text" name="" ngModel placeholder="Опыт прохождения практик" required>
-                <input type="text" name="" ngModel placeholder="Soft skills" required>
-                <input type="text" name="" ngModel placeholder="Hard skills" required>
-                <input type="text" name="" ngModel placeholder="Знание языков" required>
-            </div>
-            <input type="submit" [disabled]="myForm.invalid" value="Отправить">
-        </form>
-    </div>
-</div> -->
-
 <div class="container">
     <div class="form-panel">
         <form [formGroup]="myForm">
@@ -83,9 +38,10 @@
                     <label>Учебная группа</label>
                     <input class="form-control" name="eduGroup" formControlName="eduGroup">
                 </div>
-                <div class="photo-field">
-                    <img class="profile-photo" onerror="this.style.display='none'" src="URL">
-                    <a class="profile-photo-href" href="#">Добавить фото</a>
+                <div class="photo-field" (click)="fileUpload.click()">
+                    <img class="profile-photo" [src]="avatar" onload="this.style.display='inline'">
+                    <input type="file" class="file-input" (change)="onFileSelected($event)" #fileUpload>
+                    <a class="profile-photo-href" [style]="avatar?'display:none':'display:inline'">Добавить фото</a>
                 </div>
             </div>
             <div class="professional-info fields">
@@ -108,31 +64,38 @@
                 </div>
                 <div class="form-group">
                     <label>Учебные работы (темы курсовых / ВКР)</label>
-                    <textarea class="form-control" name="eduWorks" formControlName="eduWorks" (input)="resizeTextArea($event)"></textarea>
+                    <textarea class="form-control" name="eduWorks" formControlName="eduWorks"
+                        (input)="resizeTextArea($event)"></textarea>
                 </div>
                 <div class="form-group">
                     <label>Цель</label>
-                    <textarea class="form-control" name="goal" formControlName="goal" (input)="resizeTextArea($event)"></textarea>
+                    <textarea class="form-control" name="goal" formControlName="goal"
+                        (input)="resizeTextArea($event)"></textarea>
                 </div>
                 <div class="form-group">
                     <label>Опыт работы</label>
-                    <textarea class="form-control" name="expWork" formControlName="expWork" (input)="resizeTextArea($event)"></textarea>
+                    <textarea class="form-control" name="expWork" formControlName="expWork"
+                        (input)="resizeTextArea($event)"></textarea>
                 </div>
                 <div class="form-group">
                     <label>Опыт прохождения практик</label>
-                    <textarea class="form-control" name="expPractice" formControlName="expPractice" (input)="resizeTextArea($event)"></textarea>
+                    <textarea class="form-control" name="expPractice" formControlName="expPractice"
+                        (input)="resizeTextArea($event)"></textarea>
                 </div>
                 <div class="form-group">
                     <label>Soft skills</label>
-                    <textarea class="form-control" name="softSkills" formControlName="softSkills" (input)="resizeTextArea($event)"></textarea>
+                    <textarea class="form-control" name="softSkills" formControlName="softSkills"
+                        (input)="resizeTextArea($event)"></textarea>
                 </div>
                 <div class="form-group">
                     <label>Hard skills</label>
-                    <textarea class="form-control" name="hardSkills" formControlName="hardSkills" (input)="resizeTextArea($event)"></textarea>
+                    <textarea class="form-control" name="hardSkills" formControlName="hardSkills"
+                        (input)="resizeTextArea($event)"></textarea>
                 </div>
                 <div class="form-group">
                     <label>Знание языков</label>
-                    <textarea class="form-control" name="langKnowledge" formControlName="langKnowledge" (input)="resizeTextArea($event)"></textarea>
+                    <textarea class="form-control" name="langKnowledge" formControlName="langKnowledge"
+                        (input)="resizeTextArea($event)"></textarea>
                 </div>
             </div>
             <div class="form-group">

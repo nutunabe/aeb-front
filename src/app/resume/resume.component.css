@@ -41,20 +41,22 @@ textarea {
 
 .photo-field {
     /* margin: 16px 0 16px 16px; */
-    min-width: 254px;
-    min-height: 254px;
+    width: 254px;
+    height: 254px;
     background-color: var(--blue);
     /* border-radius: 8px; */
 }
 
-.profile-photo-href {
-    height: 100%;
-    color: #fff;
+.profile-photo {
     width: 100%;
     height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    object-fit: cover;
+    display: none;
+}
+
+.profile-photo-href {
+    color: #fff;
+    cursor: pointer;
 }
 
 h1,
@@ -80,4 +82,8 @@ h1,
     border: 1px solid var(--blue2);
     border-radius: 4px;
     background-color: var(--footer-background);
+}
+
+.file-input {
+    display: none;
 }

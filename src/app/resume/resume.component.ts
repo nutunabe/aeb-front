@@ -2,6 +2,33 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormArray, FormBuilder } from '@angular/forms';
 import { Resume } from '../resume';
 import { HttpService } from '../http.service';
+import { DomSanitizer } from '@angular/platform-browser';
+
+function getBase64Image(img) {
+    var canvas = document.createElement("canvas");
+    canvas.width = img.width;
+    canvas.height = img.height;
+
+    var ctx = canvas.getContext("2d");
+    ctx.drawImage(img, 0, 0);
+
+    var dataURL = canvas.toDataURL("image/png");
+
+    return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+}
+
+function createImageFromBlob(image: Blob) {
+    let reader = new FileReader();
+    let imageToShow;
+    reader.addEventListener("load", () => {
+        imageToShow = reader.result;
+    }, false);
+
+    if (image) {
+        reader.readAsDataURL(image);
+    }
+    return imageToShow;
+}
 
 @Component({
     selector: 'resume-app',
@@ -13,7 +40,9 @@ export class ResumeComponent {
     myForm: FormGroup;
     resume: Resume;
     flag: boolean = false;
-    constructor(private formBuilder: FormBuilder, private httpService: HttpService) {
+    fileName = '';
+    avatar: any;
+    constructor(private formBuilder: FormBuilder, private httpService: HttpService, private sanitizer: DomSanitizer) {
         this.myForm = formBuilder.group({
             "firstName": [, [Validators.required, Validators.pattern("^[А-Я][а-я]*$")]],
             "secondName": [, [Validators.required, Validators.pattern("^[А-Я][а-я]*$")]],
@@ -34,6 +63,10 @@ export class ResumeComponent {
     }
     ngOnInit() {
         this.httpService.getResume(+localStorage.getItem('id')).subscribe((data: Resume) => this.resume = data);
+        this.httpService.getIMG(+localStorage.getItem('id')).subscribe((baseImage: any) => {
+            let objectURL = URL.createObjectURL(baseImage);
+            this.avatar = this.sanitizer.bypassSecurityTrustUrl(objectURL);
+        });
     }
     ngDoCheck() {
         if (this.resume != undefined && this.resume.secondName != undefined && !this.flag) {
@@ -95,5 +128,22 @@ export class ResumeComponent {
         )
         this.httpService.updateResume(this.resume);
         console.log(this.myForm);
+    }
+    onFileSelected(event) {
+        const file: File = event.target.files[0];
+        if (file) {
+            this.fileName = file.name;
+            const formData = new FormData();
+            formData.append("file", file);
+            formData.append("userId", localStorage.getItem('id'));
+            formData.append("docType", "image");
+            const upload$ = this.httpService.uploadIMG(formData);
+            upload$.subscribe(() => {
+                this.httpService.getIMG(+localStorage.getItem('id')).subscribe((baseImage: any) => {
+                    let objectURL = URL.createObjectURL(baseImage);
+                    this.avatar = this.sanitizer.bypassSecurityTrustUrl(objectURL);
+                });
+            });
+        }
     }
 }

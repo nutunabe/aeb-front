@@ -18,7 +18,6 @@ html {
     padding-left: 15px;
     margin-left: auto;
     margin-right: auto;
-    min-height: calc(100vh - 314px);
 }
 
 a {
@@ -29,4 +28,5 @@ a {
 main {
     padding-top: 88px;
     background-color: var(--background);
+    min-height: calc(100vh - 226px);
 }

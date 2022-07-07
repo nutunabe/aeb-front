@@ -106,4 +106,12 @@ export class HttpService {
             })
         }));
     }
+
+    uploadIMG(formData: FormData) {
+        return this.http.post("http://localhost:8080/api/upload", formData, { headers: this.getHeaders(), responseType: 'blob' });
+    }
+
+    getIMG(id: number) {
+        return this.http.get("http://localhost:8080/api/download?userId=" + id + "&docType=image", { headers: this.getHeaders(), responseType: 'blob' });
+    }
 }
