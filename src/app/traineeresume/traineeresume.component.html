@@ -24,8 +24,8 @@
         <p class = "pole">{{resume.langKnowledge}}</p>
         <div class="btn">
             <div class ="btns">
-                <input type = "button" class = "btn1" value="Принять">
-                <input type = "button" class = "btn2" value="Отклонить">
+                <input (click)="approved()" type = "button" class = "btn1" value="Принять">
+                <input (click)="rejected()" type = "button" class = "btn2" value="Отклонить">
             </div>
         </div>
     </div>

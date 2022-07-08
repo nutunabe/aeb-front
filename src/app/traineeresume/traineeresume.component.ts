@@ -1,4 +1,5 @@
-import { Component, Input } from "@angular/core";
+import { Component } from "@angular/core";
+import { FormGroup } from "@angular/forms";
 import { ActivatedRoute } from "@angular/router";
 import { HttpService } from "../http.service";
 import { Resume } from "../resume";
@@ -16,6 +17,8 @@ export class TraineeResumeComponent {
 
     resume: Resume;
 
+    myForm: FormGroup;
+
     id = 0;
 
     ngOnInit() {
@@ -23,5 +26,14 @@ export class TraineeResumeComponent {
             this.id = event.id;
         })
         this.httpService.getResume(+this.id).subscribe((data: Resume) => this.resume = data);
+    }
+
+    approved(){
+        // this.resume.status = 'STATUS_APPROVED';
+        // this.httpService.updateResume(this.resume);
+    }
+
+    rejected(){
+
     }
 }

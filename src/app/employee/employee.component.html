@@ -1,4 +1,5 @@
 <div class="container">
+    <h1 class = "maintext">Список участников</h1>
     <table>
         <tr>
             <th>№</th>
@@ -6,17 +7,18 @@
             <th>Группа</th>
             <th>Номер телефона</th>
             <th>Почта</th>
-            <th>Статус</th>
-            <th></th>
+            <th>Подробнее</th>
         </tr>
-        <tr *ngFor="let i of resumes; let j=index">
-            <td>{{j+1}}</td>
-            <td>{{i.secondName + " " +i.firstName + " " + i.patronymic}}</td>
-            <td>{{i.eduGroup}}</td>
-            <td>{{i.phoneNumber}}</td>
-            <td>{{i.email}}</td>
-            <input type="button" class="primary-button--solid" 
-            value="Подробнее" [routerLink]="['/trresume', i.id]" >
-        </tr>
+        <ng-container *ngFor="let i of resumes; let j=index">
+            <tr *ngIf ="i.secondName != null">
+                    <td>{{j+1}}</td>
+                    <td>{{i.secondName + " " +i.firstName + " " + i.patronymic}}</td>
+                    <td>{{i.eduGroup}}</td>
+                    <td>{{i.phoneNumber}}</td>
+                    <td>{{i.email}}</td>
+                    <input type="button" class="primary-button--solid" 
+                    value="Подробнее" [routerLink]="['/trresume', i.id]" >
+            </tr>
+        </ng-container>
     </table>
 </div>

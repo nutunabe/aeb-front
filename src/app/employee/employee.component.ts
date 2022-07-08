@@ -1,4 +1,4 @@
-import { Component, Output } from "@angular/core";
+import { Component } from "@angular/core";
 import { Resume } from '../resume';
 import { HttpService } from '../http.service';
  
@@ -12,6 +12,7 @@ import { HttpService } from '../http.service';
 export class EmployeeComponent{
 
     constructor(private httpService: HttpService) { }
+
     resumes: Resume[];
 
     ngOnInit(){

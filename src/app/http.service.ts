@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Resume } from './resume';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { removeSummaryDuplicates } from '@angular/compiler';
 
 @Injectable()
 export class HttpService {
@@ -43,8 +44,8 @@ export class HttpService {
             softSkills: resume.softSkills,
             hardSkills: resume.hardSkills,
             langKnowledge: resume.langKnowledge,
-            imgUrl: resume.imgUrl,
-            id: resume.id
+            id: resume.id,
+            resumeStatus: resume.status
         }, { headers: this.getHeaders() }).subscribe((response: any) => {
             console.log(response);
         });
