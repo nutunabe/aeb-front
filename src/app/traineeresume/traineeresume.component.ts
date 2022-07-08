@@ -1,5 +1,4 @@
 import { Component } from "@angular/core";
-import { FormGroup } from "@angular/forms";
 import { ActivatedRoute } from "@angular/router";
 import { HttpService } from "../http.service";
 import { Resume } from "../resume";
@@ -17,8 +16,6 @@ export class TraineeResumeComponent {
 
     resume: Resume;
 
-    myForm: FormGroup;
-
     id = 0;
 
     ngOnInit() {
@@ -29,11 +26,12 @@ export class TraineeResumeComponent {
     }
 
     approved(){
-        // this.resume.status = 'STATUS_APPROVED';
+        // this.resume.status = '2';
         // this.httpService.updateResume(this.resume);
     }
 
     rejected(){
-
+        // this.resume.status = '2';
+        // this.httpService.updateResume(this.resume);
     }
 }

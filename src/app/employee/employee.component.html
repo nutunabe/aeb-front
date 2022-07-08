@@ -7,6 +7,7 @@
             <th>Группа</th>
             <th>Номер телефона</th>
             <th>Почта</th>
+            <th>Статус</th>
             <th>Подробнее</th>
         </tr>
         <ng-container *ngFor="let i of resumes; let j=index">
@@ -16,6 +17,7 @@
                     <td>{{i.eduGroup}}</td>
                     <td>{{i.phoneNumber}}</td>
                     <td>{{i.email}}</td>
+                    <td>{{i.status}}</td>
                     <input type="button" class="primary-button--solid" 
                     value="Подробнее" [routerLink]="['/trresume', i.id]" >
             </tr>
