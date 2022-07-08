@@ -171,11 +171,9 @@ export class ResumeComponent {
             this.myForm.value.softSkills,
             this.myForm.value.hardSkills,
             this.myForm.value.langKnowledge,
-            this.myForm.value.imgUrl,
             +localStorage.getItem('id')
         )
         this.httpService.updateResume(this.resume);
-        console.log(this.myForm);
     }
     onFileSelected(event) {
         const file: File = event.target.files[0];

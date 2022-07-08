@@ -73,7 +73,6 @@ export class HttpService {
                         resume.softSkills,
                         resume.hardSkills,
                         resume.langKnowledge,
-                        resume.imgUrl,
                         resume.id,
                         resume.resumeStatus
                     )
@@ -100,7 +99,6 @@ export class HttpService {
                     resume.softSkills,
                     resume.hardSkills,
                     resume.langKnowledge,
-                    resume.imgUrl,
                     resume.id,
                     resume.resumeStatus
                 )
