@@ -43,8 +43,8 @@ export class HttpService {
             softSkills: resume.softSkills,
             hardSkills: resume.hardSkills,
             langKnowledge: resume.langKnowledge,
-            imgUrl: resume.imgUrl,
-            id: resume.id
+            id: resume.id,
+            resumeStatus: resume.status
         }, { headers: this.getHeaders() }).subscribe((response: any) => {
             console.log(response);
         });
@@ -72,7 +72,6 @@ export class HttpService {
                         resume.softSkills,
                         resume.hardSkills,
                         resume.langKnowledge,
-                        resume.imgUrl,
                         resume.id,
                         resume.resumeStatus
                     )
@@ -99,7 +98,6 @@ export class HttpService {
                     resume.softSkills,
                     resume.hardSkills,
                     resume.langKnowledge,
-                    resume.imgUrl,
                     resume.id,
                     resume.resumeStatus
                 )

@@ -1,24 +1,24 @@
 <div class="container">
-    <a routerLink="/resume" *ngIf="resume==undefined || resume.secondName==undefined">Заполнить резюме</a>
-    <div *ngIf="resume!=undefined && resume.secondName!=undefined">
-        <a routerLink="/resume">Редактировать резюме</a>
-        <h1>Инфа</h1>
-        <p>Фамилия: {{resume.secondName}}</p>
-        <p>Имя: {{resume.firstName}}</p>
-        <p>Отчество: {{resume.patronymic}}</p>
-        <p>Дата рождения: {{resume.birthdate}}</p>
-        <p>Моб. телефон: {{resume.phoneNumber}}</p>
-        <p>Электронная почта: {{resume.email}}</p>
-        <p>Учебная группа: {{resume.eduGroup}}</p>
-        <p>Образование: </p>
-        <p style="margin-left: 12px;" *ngFor="let edu of resume.education;">{{edu}}</p>
-        <p>Учебные работы: {{resume.eduWorks}}</p>
-        <p>Цель: {{resume.goal}}</p>
-        <p>Опыт работы: {{resume.expWork}}</p>
-        <p>Опыт прохождения практик: {{resume.expPractice}}</p>
-        <p>Soft skills: {{resume.softSkills}}</p>
-        <p>Hard skills: {{resume.hardSkills}}</p>
-        <p>Знание языков: {{resume.langKnowledge}}</p>
-        <p>AAAAAAAAAA: {{resume.status}}</p>
+    <div class="row">
+        <div class="column left">
+            <div class="photo"><img [src]="avatar" *ngIf="avatar!=undefined" onload="this.style.display='inline'"></div>
+            <a routerLink="/resume" *ngIf="resume==undefined || resume.secondName==undefined"><input type="button"
+                    value="Заполнить резюме" class="primary-button"></a>
+            <a routerLink="/resume" *ngIf="resume!=undefined && resume.secondName!=undefined"><input type="button"
+                    value="Редактировать резюме" class="primary-button"></a>
+        </div>
+        <div class="column right">
+            <h1>Информация</h1>
+            <p>Никнейм: {{username}}</p>
+            <div *ngIf="resume!=undefined && resume.secondName!=undefined">
+                <p>Фамилия: {{resume.secondName}}</p>
+                <p>Имя: {{resume.firstName}}</p>
+                <p>Отчество: {{resume.patronymic}}</p>
+                <p>Дата рождения: {{resume.birthdate}}</p>
+                <p>Моб. телефон: {{resume.phoneNumber}}</p>
+                <p>Электронная почта: {{resume.email}}</p>
+                <p>Учебная группа: {{resume.eduGroup}}</p>
+            </div>
+        </div>
     </div>
 </div>

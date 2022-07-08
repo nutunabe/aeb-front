@@ -15,7 +15,6 @@ export class Resume {
         public softSkills: string,
         public hardSkills: string,
         public langKnowledge: string,
-        public imgUrl: string,
         public id?: number,
         public status?: string
     ) { }
